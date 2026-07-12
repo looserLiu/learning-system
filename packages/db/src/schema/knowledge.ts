@@ -1,8 +1,8 @@
 import { pgTable, uuid, text, integer, boolean, timestamp, jsonb, pgEnum, primaryKey } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
-import { users } from './users'
-import { studySessions } from './progress'
-import { notes } from './notes'
+import { users } from './users.ts'
+import { studySessions } from './progress.ts'
+import { notes } from './notes.ts'
 
 export const knowledgeTypeEnum = pgEnum('knowledge_type', ['article', 'video', 'code', 'podcast'])
 export const difficultyEnum = pgEnum('difficulty', ['beginner', 'intermediate', 'advanced'])

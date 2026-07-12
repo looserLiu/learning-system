@@ -3,8 +3,8 @@ import { db } from '@lms/db'
 import { users } from '@lms/db'
 import { RegisterSchema, LoginSchema } from '@lms/shared'
 import { ErrorCode, AppError } from '@lms/shared'
-import { hashPassword, verifyPassword } from '../../utils/password.js'
-import { signAccessToken, signRefreshToken } from '../../utils/jwt.js'
+import { hashPassword, verifyPassword } from '../../utils/password.ts'
+import { signAccessToken, signRefreshToken } from '../../utils/jwt.ts'
 
 export interface AuthResult {
   user: { id: string; email: string; displayName: string | null; role: string }

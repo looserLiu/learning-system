@@ -1,9 +1,9 @@
 import { Router } from 'express'
 import { RegisterSchema, LoginSchema } from '@lms/shared'
-import { validate } from '../../middleware/validate.js'
-import { authenticate } from '../../middleware/auth.js'
-import { createRateLimiter } from '../../middleware/rateLimit.js'
-import * as service from './auth.service'
+import { validate } from '../../middleware/validate.ts'
+import { authenticate } from '../../middleware/auth.ts'
+import { createRateLimiter } from '../../middleware/rateLimit.ts'
+import * as service from './auth.service.js'
 
 const router = Router()
 const authLimiter = createRateLimiter(5, 60_000)

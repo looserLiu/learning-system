@@ -1,6 +1,6 @@
 import { pgTable, uuid, text, boolean, timestamp, jsonb, pgEnum, index } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
-import { users } from './users'
+import { users } from './users.ts'
 
 export const notificationTypeEnum = pgEnum('notification_type', ['achievement', 'reminder', 'system', 'due_review'])
 

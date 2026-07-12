@@ -1,8 +1,8 @@
 import { pgTable, uuid, text, timestamp, jsonb, pgEnum } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
-import { knowledgeItems } from './knowledge'
-import { studySessions } from './progress'
-import { notes } from './notes'
+import { knowledgeItems } from './knowledge.ts'
+import { studySessions } from './progress.ts'
+import { notes } from './notes.ts'
 
 export const userRoleEnum = pgEnum('user_role', ['learner', 'admin'])
 

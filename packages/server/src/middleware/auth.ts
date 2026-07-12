@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { AppError, ErrorCode } from '@lms/shared'
-import { verifyAccessToken, AccessTokenPayload } from '../utils/jwt.js'
+import { verifyAccessToken, AccessTokenPayload } from '../utils/jwt.ts'
 
 declare global {
   namespace Express {

@@ -1,6 +1,6 @@
-import { createApp } from './app'
-import logger from './logger'
-import config from './config'
+import { createApp } from './app.ts'
+import logger from './logger.ts'
+import config from './config.ts'
 
 const app = createApp()
 

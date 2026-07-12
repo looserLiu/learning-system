@@ -1,11 +1,12 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { useAuthStore } from '../../stores/authStore'
-import { useUIStore } from '../../stores/uiStore'
-import { BookOpen, LayoutDashboard, Library, BarChart3, LogOut, Menu } from 'lucide-react'
+import { useAuthStore } from '../../stores/authStore.ts'
+import { useUIStore } from '../../stores/uiStore.ts'
+import { BookOpen, LayoutDashboard, Library, BarChart3, LogOut, Menu, Trophy } from 'lucide-react'
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: '仪表盘' },
   { to: '/knowledge', icon: Library, label: '知识库' },
+  { to: '/achievements', icon: Trophy, label: '成就' },
   { to: '/stats', icon: BarChart3, label: '统计' },
 ]
 

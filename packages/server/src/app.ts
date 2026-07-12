@@ -1,13 +1,15 @@
 import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
-import { authRoutes } from './modules/auth/index'
-import { knowledgeRoutes } from './modules/knowledge/index'
-import { progressRoutes } from './modules/progress/index'
-import { notesRoutes } from './modules/notes/index'
-import { errorHandler } from './utils/errors'
-import { requestLogger } from './middleware/requestLogger'
-import config from './config'
+import { authRoutes } from './modules/auth/index.ts'
+import { knowledgeRoutes } from './modules/knowledge/index.ts'
+import { progressRoutes } from './modules/progress/index.ts'
+import { notesRoutes } from './modules/notes/index.ts'
+import { aiRoutes } from './modules/ai/index.ts'
+import { achievementsRoutes } from './modules/achievements/index.ts'
+import { errorHandler } from './utils/errors.ts'
+import { requestLogger } from './middleware/requestLogger.ts'
+import config from './config.ts'
 
 export function createApp() {
   const app = express()
@@ -33,6 +35,8 @@ export function createApp() {
   app.use('/api/knowledge', knowledgeRoutes)
   app.use('/api/progress', progressRoutes)
   app.use('/api/notes', notesRoutes)
+  app.use('/api/ai', aiRoutes)
+  app.use('/api/achievements', achievementsRoutes)
 
   // 404 handler
   app.use((_req, res) => {

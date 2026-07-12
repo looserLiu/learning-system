@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import { api } from '../lib/api'
-import { useAuthStore } from '../stores/authStore'
-import { Heatmap } from '../components/domain/Heatmap'
+import { api } from '../lib/api.ts'
+import { useAuthStore } from '../stores/authStore.ts'
+import { Heatmap } from '../components/domain/Heatmap.ts'
 import { Flame, Clock, BookOpen, Target } from 'lucide-react'
 import { Link } from 'react-router-dom'
 

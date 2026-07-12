@@ -1,6 +1,6 @@
 , { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { api } from '../../lib/api'
+import { api } from '../../lib/api.ts'
 import { toast } from 'sonner'
 import { X } from 'lucide-react'
 

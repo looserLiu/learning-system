@@ -1,1 +1,1 @@
-export { default as notesRoutes } from './notes.routes'
+export { default as notesRoutes } from './notes.routes.js'

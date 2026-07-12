@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { authenticate } from '../../middleware/auth.js'
-import { validate } from '../../middleware/validate.js'
+import { authenticate } from '../../middleware/auth.ts'
+import { validate } from '../../middleware/validate.ts'
 import { StudySessionStartSchema, StudySessionEndSchema } from '@lms/shared'
-import * as service from './progress.service'
+import * as service from './progress.service.js'
 
 const router = Router()
 

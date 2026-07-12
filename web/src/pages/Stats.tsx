@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { api } from '../lib/api'
-import { Heatmap } from '../components/domain/Heatmap'
+import { api } from '../lib/api.ts'
+import { Heatmap } from '../components/domain/Heatmap.ts'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts'
 
 export function Stats() {

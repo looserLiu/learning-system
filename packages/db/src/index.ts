@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/node-postgres'
 import pg from 'pg'
-import config from './config.js'
+import config from './config.ts'
 
 const pool = new pg.Pool({
   connectionString: config.databaseUrl,
@@ -9,10 +9,10 @@ const pool = new pg.Pool({
 export const db = drizzle(pool)
 export default db
 
-export * from './schema/users.js'
-export * from './schema/knowledge.js'
-export * from './schema/progress.js'
-export * from './schema/achievements.js'
-export * from './schema/notes.js'
-export * from './schema/notifications.js'
-export * from './schema/ai.js'
+export * from './schema/users.ts'
+export * from './schema/knowledge.ts'
+export * from './schema/progress.ts'
+export * from './schema/achievements.ts'
+export * from './schema/notes.ts'
+export * from './schema/notifications.ts'
+export * from './schema/ai.ts'

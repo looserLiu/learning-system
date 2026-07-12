@@ -1,7 +1,7 @@
 import { pgTable, uuid, text, integer, timestamp, doublePrecision, pgEnum, index } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
-import { users } from './users'
-import { knowledgeItems } from './knowledge'
+import { users } from './users.ts'
+import { knowledgeItems } from './knowledge.ts'
 
 export const studyTypeEnum = pgEnum('study_session_type', ['learn', 'review', 'practice'])
 

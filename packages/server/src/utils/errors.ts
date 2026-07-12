@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { ZodError } from 'zod'
 import { AppError, ErrorCode } from '@lms/shared'
-import logger from '../logger.js'
+import logger from '../logger.ts'
 
 export function errorHandler(
   err: Error,

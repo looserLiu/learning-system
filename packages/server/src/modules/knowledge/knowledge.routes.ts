@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { authenticate } from '../../middleware/auth.js'
-import { validate, validateQuery } from '../../middleware/validate.js'
+import { authenticate } from '../../middleware/auth.ts'
+import { validate, validateQuery } from '../../middleware/validate.ts'
 import { KnowledgeCreateSchema, KnowledgeQuerySchema } from '@lms/shared'
-import * as service from './knowledge.service'
+import * as service from './knowledge.service.js'
 
 const router = Router()
 

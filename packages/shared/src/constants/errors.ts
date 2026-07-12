@@ -50,13 +50,14 @@ export const ErrorMessages: Record<ErrorCodeType, string> = {
 }
 
 export class AppError extends Error {
-  constructor(
-    public code: ErrorCodeType,
-    message?: string,
-    public details?: unknown,
-  ) {
+  code: ErrorCodeType
+  details?: unknown
+
+  constructor(code: ErrorCodeType, message?: string, details?: unknown) {
     super(message || ErrorMessages[code])
     this.name = 'AppError'
+    this.code = code
+    this.details = details
   }
 
   toJSON() {

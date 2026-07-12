@@ -2,10 +2,10 @@ import 'dotenv/config'
 import { drizzle } from 'drizzle-orm/node-postgres'
 import pg from 'pg'
 import bcrypt from 'bcryptjs'
-import { users } from '../schema/users.js'
-import { knowledgeItems, tags, knowledgeTags } from '../schema/knowledge.js'
-import { studySessions } from '../schema/progress.js'
-import { notes } from '../schema/notes.js'
+import { users } from '../schema/users.ts'
+import { knowledgeItems, tags, knowledgeTags } from '../schema/knowledge.ts'
+import { studySessions } from '../schema/progress.ts'
+import { notes } from '../schema/notes.ts'
 import { eq, and } from 'drizzle-orm'
 
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL })
@@ -155,7 +155,19 @@ export async function seedDev() {
   })
   console.log('Created sample notes')
 
-  console.log('\nSeed completed! Login: test@example.com / password123')
+  // Seed default achievements
+  const { achievements } = await import('../schema/achievements.js')
+  const defaultAchievements = [
+    { name: '初学者', description: '完成第一次学习', type: 'progress', condition: { metric: 'sessions_count', target: 1 }, points: 10, icon: '🌱' },
+    { name: '坚持一周', description: '连续学习 7 天', type: 'streak', condition: { metric: 'streak_days', target: 7 }, points: 50, icon: '🔥' },
+    { name: '知识收集者', description: '创建 10 个知识条目', type: 'knowledge', condition: { metric: 'knowledge_count', target: 10 }, points: 30, icon: '📚' },
+    { name: '学习达人', description: '累计学习 5 小时', type: 'progress', condition: { metric: 'total_minutes', target: 300 }, points: 100, icon: '⭐' },
+    { name: '学霸', description: '完成 50 次学习', type: 'progress', condition: { metric: 'sessions_count', target: 50 }, points: 200, icon: '🏆' },
+  ]
+  await db.insert(achievements).values(defaultAchievements).onConflictDoNothing()
+  console.log(`Created ${defaultAchievements.length} achievements`)
+
+  console.log('\\nSeed completed! Login: test@example.com / password123')
 }
 
 // Run if executed directly

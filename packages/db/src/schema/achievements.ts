@@ -1,6 +1,6 @@
 import { pgTable, uuid, text, integer, boolean, timestamp, jsonb, pgEnum, primaryKey } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
-import { users } from './users'
+import { users } from './users.ts'
 
 export const achievementTypeEnum = pgEnum('achievement_type', ['progress', 'knowledge', 'streak', 'custom'])
 
