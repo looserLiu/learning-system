@@ -5,6 +5,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: '#5B9BD5',
           50: '#F0F7FC',
@@ -17,6 +19,13 @@ const config: Config = {
           700: '#2E86C1',
           800: '#2874A6',
           900: '#1B4F72',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        border: {
+          DEFAULT: 'hsl(var(--border))',
         },
       },
     },

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { api } from '../../lib/api.ts'
+import { api } from '../../lib/api'
 import { FileText, HelpCircle, Lightbulb, Loader2, Sparkles } from 'lucide-react'
 
 interface Props {
@@ -35,7 +35,7 @@ export function AiActions({ knowledgeId, content }: Props) {
     setError(null)
     try {
       const res = await api.post('/ai/quiz', { knowledgeId })
-      setResponse(res.data.quiz)
+      setResult(res.data.quiz)
     } catch (err: any) {
       setError(err.response?.data?.error?.message || '生成题目失败')
     } finally {
@@ -49,7 +49,7 @@ export function AiActions({ knowledgeId, content }: Props) {
     setError(null)
     try {
       const res = await api.post('/ai/recommend')
-      setResponse(res.data.recommendations)
+      setResult(res.data.recommendations)
     } catch (err: any) {
       setError(err.response?.data?.error?.message || '获取推荐失败')
     } finally {

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { ZodError } from 'zod'
 import { AppError, ErrorCode } from '@lms/shared'
-import logger from '../logger.ts'
+import logger from '../logger.js'
 
 export function errorHandler(
   err: Error,
@@ -13,7 +13,13 @@ export function errorHandler(
 
   if (err instanceof AppError) {
     const status = getStatusCode(err.code)
-    logger.warn({ err: err.code, path: req.path, requestId }, err.message)
+    const level = status >= 500 ? 'error' : 'warn'
+    logger[level]({
+      err: err.code,
+      path: req.path,
+      status,
+      requestId,
+    }, err.message)
     return res.status(status).json({
       error: {
         code: err.code,
@@ -25,7 +31,7 @@ export function errorHandler(
   }
 
   if (err instanceof ZodError) {
-    logger.warn({ path: req.path, requestId }, 'Validation error')
+    logger.warn({ path: req.path, requestId }, '参数校验失败')
     return res.status(400).json({
       error: {
         code: ErrorCode.VALIDATION_ERROR,
@@ -39,7 +45,7 @@ export function errorHandler(
     })
   }
 
-  logger.error({ err, path: req.path, requestId }, 'Internal error')
+  logger.error({ err, path: req.path, requestId }, '服务器内部错误')
   return res.status(500).json({
     error: {
       code: ErrorCode.INTERNAL_ERROR,

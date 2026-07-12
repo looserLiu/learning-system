@@ -1,6 +1,6 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { useAuthStore } from '../../stores/authStore.ts'
-import { useUIStore } from '../../stores/uiStore.ts'
+import { useAuthStore } from '../../stores/authStore'
+import { useUIStore } from '../../stores/uiStore'
 import { BookOpen, LayoutDashboard, Library, BarChart3, LogOut, Menu, Trophy } from 'lucide-react'
 
 const navItems = [

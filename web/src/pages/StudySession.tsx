@@ -1,11 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { api } from '../lib/api.ts'
-import { useStudyStore } from '../stores/studyStore.ts'
+import { api } from '../lib/api'
+import { useStudyStore } from '../stores/studyStore'
 import { toast } from 'sonner'
 import { Pause, Play, Square, Clock } from 'lucide-react'
-import { formatDuration } from '../lib/format.ts'
+import { formatDuration } from '../lib/format'
 
 export function StudySession() {
   const { id } = useParams<{ id: string }>()

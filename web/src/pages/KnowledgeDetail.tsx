@@ -1,10 +1,10 @@
 import { useParams, Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { api } from '../lib/api.ts'
-import { AiChat } from '../components/domain/AiChat.ts'
-import { AiActions } from '../components/domain/AiActions.ts'
+import { api } from '../lib/api'
+import { AiChat } from '../components/domain/AiChat'
+import { AiActions } from '../components/domain/AiActions'
 import { Play, ArrowLeft, Tag } from 'lucide-react'
-import { formatDate } from '../lib/format.ts'
+import { formatDate } from '../lib/format'
 
 export function KnowledgeDetail() {
   const { id } = useParams<{ id: string }>()

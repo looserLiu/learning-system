@@ -1,5 +1,5 @@
-, { useState, useRef, useEffect } from 'react'
-import { api } from '../../lib/api.ts'
+import { useState, useRef, useEffect } from 'react'
+import { api } from '../../lib/api'
 import { Send, Loader2, Bot, User } from 'lucide-react'
 
 interface Message {
@@ -44,9 +44,9 @@ export function AiChat({ knowledgeId, knowledgeTitle }: Props) {
         knowledgeId,
         conversationId,
       })
-      
+
       setConversationId(res.data.conversationId)
-      
+
       const assistantMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -69,7 +69,6 @@ export function AiChat({ knowledgeId, knowledgeTitle }: Props) {
 
   return (
     <div className="flex flex-col h-[500px] bg-white rounded-xl border border-gray-200">
-      {/* Header */}
       <div className="px-4 py-3 border-b border-gray-100 flex items-center gap-2">
         <Bot className="w-5 h-5 text-primary-500" />
         <span className="font-medium text-gray-900">AI 学习助手</span>
@@ -80,7 +79,6 @@ export function AiChat({ knowledgeId, knowledgeTitle }: Props) {
         )}
       </div>
 
-      {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.length === 0 && (
           <div className="text-center text-gray-400 py-12">
@@ -127,7 +125,6 @@ export function AiChat({ knowledgeId, knowledgeTitle }: Props) {
         <div ref={bottomRef} />
       </div>
 
-      {/* Input */}
       <div className="p-4 border-t border-gray-100">
         <div className="flex gap-2">
           <input

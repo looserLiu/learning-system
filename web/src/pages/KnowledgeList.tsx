@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
-import { api } from '../lib/api.ts'
+import { api } from '../lib/api'
 import { toast } from 'sonner'
 import { Plus, Search, Filter } from 'lucide-react'
-import { KnowledgeForm } from '../components/domain/KnowledgeForm.ts'
+import { KnowledgeForm } from '../components/domain/KnowledgeForm'
 
 export function KnowledgeList() {
   const [search, setSearch] = useState('')
