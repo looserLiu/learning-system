@@ -1,0 +1,25 @@
+{
+  "name": "learning-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:server": "pnpm --filter @lms/server dev",
+    "dev:web": "pnpm --filter @lms/web dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "db:up": "docker compose up -d postgres redis",
+    "db:down": "docker compose down",
+    "db:migrate": "pnpm --filter @lms/db migrate",
+    "db:generate": "pnpm --filter @lms/db generate",
+    "db:seed": "pnpm --filter @lms/db seed",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,73 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: lms
+      POSTGRES_USER: lms
+      POSTGRES_PASSWORD: \${POSTGRES_PASSWORD:-password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lms"]
+      interval: 5s
+      retries: 5
+      timeout: 5s
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 5
+      timeout: 5s
+
+  server:
+    build:
+      context: .
+      dockerfile: packages/server/Dockerfile
+      target: development
+    environment:
+      DATABASE_URL: postgresql://lms:\${POSTGRES_PASSWORD:-password}@postgres:5432/lms
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: \${JWT_SECRET:-dev-secret-change-me}
+      AI_PROVIDER: \${AI_PROVIDER:-ollama}
+      OLLAMA_BASE_URL: \${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      NODE_ENV: development
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./packages/server/src:/app/src
+      - ./packages/shared/src:/app/node_modules/@lms/shared/src
+      - ./packages/db/src:/app/node_modules/@lms/db/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      target: development
+    ports:
+      - "3000:5173"
+    environment:
+      VITE_API_URL: http://localhost:3001
+      VITE_WS_URL: ws://localhost:3001
+    volumes:
+      - ./web/src:/app/src
+      - ./web/index.html:/app/index.html
+    depends_on:
+      - server
+
+volumes:
+  pgdata:
