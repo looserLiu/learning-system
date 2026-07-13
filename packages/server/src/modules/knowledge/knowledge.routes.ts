@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { authenticate } from '../../middleware/auth.ts'
-import { validate, validateQuery } from '../../middleware/validate.ts'
+import { authenticate } from '../../middleware/auth.js'
+import { validate, validateQuery } from '../../middleware/validate.js'
 import { KnowledgeCreateSchema, KnowledgeQuerySchema } from '@lms/shared'
 import * as service from './knowledge.service.js'
 

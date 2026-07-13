@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { authenticate } from '../../middleware/auth.ts'
+import { authenticate } from '../../middleware/auth.js'
 import * as service from './achievements.service.js'
 
 const router = Router()

@@ -1,5 +1,5 @@
-import { AIProvider, ChatMessage, ChatOptions, ChatChunk, ModelInfo } from './types.ts'
-import config from '../../../config.ts'
+import { AIProvider, ChatMessage, ChatOptions, ChatChunk, ModelInfo } from './types.js'
+import config from '../../../config.js'
 
 // Dynamic import to avoid dependency when not using OpenAI
 let OpenAIClass: any = null

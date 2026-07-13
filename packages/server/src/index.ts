@@ -1,16 +1,23 @@
-import { createApp } from './app.ts'
-import logger from './logger.ts'
-import config from './config.ts'
+import { createApp } from './app.js'
+import { initSocketIO } from './sockets/index.js'
+import { initCronJobs } from './cron.js'
+import logger from './logger.js'
+import config from './config.js'
 
 const app = createApp()
-
 const server = app.listen(config.port, () => {
   logger.info({
     port: config.port,
     env: config.env,
-    databaseUrl: config.databaseUrl.replace(/\/\/.*@/, '//***@'),  // hide credentials
+    databaseUrl: config.databaseUrl.replace(/\/\/.*@/, '//***@'),
   }, 'Server started')
 })
+
+// 初始化 Socket.IO
+initSocketIO(server)
+
+// 初始化定时任务
+initCronJobs()
 
 // Graceful shutdown
 const shutdown = (signal: string) => {

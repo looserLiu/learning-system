@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { randomUUID } from 'crypto'
-import logger from '../logger.ts'
+import logger from '../logger.js'
 
 export function requestLogger(req: Request, res: Response, next: NextFunction) {
   const start = Date.now()

@@ -1,4 +1,4 @@
-import { ChatMessage } from './providers/types.ts'
+import { ChatMessage } from './providers/types.js'
 
 export function explainCodePrompt(code: string, language?: string): ChatMessage[] {
   return [

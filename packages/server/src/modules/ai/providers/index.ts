@@ -1,6 +1,6 @@
-import { AIProvider } from './types.ts'
-import { OllamaProvider } from './ollama.ts'
-import { OpenAIProvider } from './openai.ts'
+import { AIProvider } from './types.js'
+import { OllamaProvider } from './ollama.js'
+import { OpenAIProvider } from './openai.js'
 import config from '../../../config.js'
 import logger from '../../../logger.js'
 

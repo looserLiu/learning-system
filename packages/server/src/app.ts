@@ -1,15 +1,17 @@
 import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
-import { authRoutes } from './modules/auth/index.ts'
-import { knowledgeRoutes } from './modules/knowledge/index.ts'
-import { progressRoutes } from './modules/progress/index.ts'
-import { notesRoutes } from './modules/notes/index.ts'
-import { aiRoutes } from './modules/ai/index.ts'
-import { achievementsRoutes } from './modules/achievements/index.ts'
-import { errorHandler } from './utils/errors.ts'
-import { requestLogger } from './middleware/requestLogger.ts'
-import config from './config.ts'
+import { authRoutes } from './modules/auth/index.js'
+import { knowledgeRoutes } from './modules/knowledge/index.js'
+import { progressRoutes } from './modules/progress/index.js'
+import { notesRoutes } from './modules/notes/index.js'
+import { aiRoutes } from './modules/ai/index.js'
+import { achievementsRoutes } from './modules/achievements/index.js'
+import { notificationsRoutes } from './modules/notifications/index.js'
+import { exportRoutes } from './modules/export/index.js'
+import { errorHandler } from './utils/errors.js'
+import { requestLogger } from './middleware/requestLogger.js'
+import config from './config.js'
 
 export function createApp() {
   const app = express()
@@ -37,6 +39,8 @@ export function createApp() {
   app.use('/api/notes', notesRoutes)
   app.use('/api/ai', aiRoutes)
   app.use('/api/achievements', achievementsRoutes)
+  app.use('/api/notifications', notificationsRoutes)
+  app.use('/api/export', exportRoutes)
 
   // 404 handler
   app.use((_req, res) => {

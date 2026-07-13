@@ -57,7 +57,14 @@ export async function listKnowledge(userId: string, query: {
   
   if (query.category) conditions.push(eq(knowledgeItems.category, query.category))
   if (query.type) conditions.push(eq(knowledgeItems.type, query.type))
-  if (query.search) conditions.push(sql`${knowledgeItems.title} ILIKE ${'%' + query.search + '%'}`)
+  if (query.search) {
+    // 使用 pg_trgm 进行模糊搜索（支持中文分词和拼写容错）
+    conditions.push(sql`(
+      ${knowledgeItems.title} ILIKE ${'%' + query.search + '%'}
+      OR ${knowledgeItems.content} ILIKE ${'%' + query.search + '%'}
+      OR similarity(${knowledgeItems.title}, ${query.search}) > 0.1
+    )`)
+  }
 
   const sortField = query.sort === 'oldest' ? knowledgeItems.createdAt : desc(knowledgeItems.updatedAt)
 

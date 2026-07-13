@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { authenticate } from '../../middleware/auth.ts'
-import { validate } from '../../middleware/validate.ts'
+import { authenticate } from '../../middleware/auth.js'
+import { validate } from '../../middleware/validate.js'
 import { NoteCreateSchema, NoteUpdateSchema } from '@lms/shared'
 import * as service from './notes.service.js'
 

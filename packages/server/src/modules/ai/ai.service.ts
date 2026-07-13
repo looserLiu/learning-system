@@ -1,11 +1,11 @@
 import { eq, and, desc } from 'drizzle-orm'
 import { db } from '@lms/db'
 import { aiConversations, knowledgeItems } from '@lms/db'
-import { getWorkingProvider } from './providers/index.ts'
-import { ChatMessage } from './providers/types.ts'
-import { explainCodePrompt, generateQuizPrompt, recommendTopicPrompt, chatPrompt } from './prompts.ts'
+import { getWorkingProvider } from './providers/index.js'
+import { ChatMessage } from './providers/types.js'
+import { explainCodePrompt, generateQuizPrompt, recommendTopicPrompt, chatPrompt } from './prompts.js'
 import { ErrorCode, AppError } from '@lms/shared'
-import logger from '../../logger.ts'
+import logger from '../../logger.js'
 
 type AiAction = 'explain_code' | 'generate_quiz' | 'recommend_topic' | 'chat'
 
